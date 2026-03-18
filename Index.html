@@ -1,0 +1,104 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VOR / HSI Simulator – Original</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>VOR / HSI Simulator</h1>
+
+  <div id="top-bar">
+    <div>
+      <label>
+        Mode:
+        <select id="modeSelect">
+          <option value="vor">VOR (CDI)</option>
+          <option value="hsi">HSI</option>
+        </select>
+      </label>
+      <label>
+        Quiz Mode:
+        <input type="checkbox" id="quizToggle">
+      </label>
+      <button id="newQuizBtn">New Quiz Position</button>
+      <span id="quizStatus"></span>
+    </div>
+  </div>
+
+  <div id="app">
+    <canvas id="vorCanvas" width="520" height="520"></canvas>
+
+    <div id="controls">
+      <h2>Controls</h2>
+
+      <fieldset>
+        <legend>VOR Selection</legend>
+        <label>
+          Active VOR:
+          <select id="vorSelect">
+            <option value="0">VOR 1</option>
+            <option value="1">VOR 2</option>
+            <option value="2">VOR 3</option>
+          </select>
+        </label>
+        <p class="hint">Each VOR is at a different fixed position on the map.</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>OBS / Heading</legend>
+        <label>OBS (Selected Course):
+          <input type="range" id="obs" min="0" max="359" value="0">
+          <span id="obsValue">0°</span>
+        </label>
+        <label>Aircraft Heading (for HSI):
+          <input type="range" id="hdg" min="0" max="359" value="0">
+          <span id="hdgValue">0°</span>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Aircraft Position (NM)</legend>
+        <label>Aircraft X (East/West):
+          <input type="range" id="acX" min="-40" max="40" value="10">
+          <span id="acXValue">10</span>
+        </label>
+        <label>Aircraft Y (North/South):
+          <input type="range" id="acY" min="-40" max="40" value="10">
+          <span id="acYValue">10</span>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Readouts</legend>
+        <p><strong>Active VOR Position:</strong> <span id="vorPosReadout"></span></p>
+        <p><strong>Radial (FROM):</strong> <span id="radialReadout">---</span></p>
+        <p><strong>CDI Deflection:</strong> <span id="cdiReadout">---</span></p>
+        <p><strong>TO/FROM:</strong> <span id="toFromReadout">---</span></p>
+        <p><strong>Distance:</strong> <span id="distanceReadout">---</span> NM</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Quiz Check</legend>
+        <label>Your Radial Guess:
+          <input type="number" id="guessRadial" min="0" max="359">
+        </label>
+        <label>Your TO/FROM Guess:
+          <select id="guessToFrom">
+            <option value="">--</option>
+            <option value="TO">TO</option>
+            <option value="FROM">FROM</option>
+          </select>
+        </label>
+        <button id="checkQuizBtn">Check</button>
+      </fieldset>
+    </div>
+  </div>
+
+  <footer>
+    <p>Original VOR / HSI simulator for classroom and training use. Free to use, fork, and modify.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
